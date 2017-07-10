@@ -26,6 +26,7 @@ class Calendar extends Component {
     autoOk: PropTypes.bool,
     cancelLabel: PropTypes.node,
     disableYearSelection: PropTypes.bool,
+    displayYearSelectionFirst: PropTypes.bool,
     firstDayOfWeek: PropTypes.number,
     hideCalendarDate: PropTypes.bool,
     initialDate: PropTypes.object,
@@ -46,6 +47,7 @@ class Calendar extends Component {
   static defaultProps = {
     DateTimeFormat: dateTimeFormat,
     disableYearSelection: false,
+    displayYearSelectionFirst: false,
     initialDate: new Date(),
     locale: 'en-US',
     utils: defaultUtils,
@@ -57,7 +59,7 @@ class Calendar extends Component {
 
   state = {
     displayDate: undefined,
-    displayMonthDay: undefined,
+    displayMonthDay: !this.props.displayYearSelectionFirst || this.props.disableYearSelection,
     selectedDate: undefined,
     transitionDirection: 'left',
     transitionEnter: true,
