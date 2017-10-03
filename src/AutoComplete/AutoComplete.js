@@ -266,6 +266,9 @@ class AutoComplete extends Component {
   };
 
   handleItemTouchTap = (event, child) => {
+    // Prevent ghost clicks
+    if (event && event.preventDefault) event.preventDefault();
+
     const dataSource = this.props.dataSource;
     const index = parseInt(child.key, 10);
     const chosenRequest = dataSource[index];
